@@ -7,9 +7,19 @@
     <title>Twittler</title>
   </head>
   <body>
+    <header>
+      <h1>Twittler</h1>
+      <p>String of conciousness caught in a timeline.</p>
+      <ul class='nav-bar'>
+        <li><a href='#'>Find something new</a></li>
+        <li><a href='#'>Followers</a></li>
+        <li><a href='#'>Following</a></li>
+        <li><a href='#'>Home</a></li>
+      </ul>
+      <button class='refresh'>Refresh the Timeline</button>
+    </header>
     <section class='timeline'>
-      <p>Here's what you've missed!</p>
-      
+      <p>Here's what you've missed!</p> 
     </section>
     
     
@@ -19,22 +29,52 @@
         var $body = $('body');
         //$body.html('');
 
-        var index = streams.home.length - 1;
+        /*var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet =  $('<div class="new-tweet"></div>');//$('.new-tweet');
           //var $time = $.now();
           var $user = $('<span class="username"></span>');
           var $message = $('<span class="tweet-text"></span>');
+          var $timestamp = $('<p class="timestamp"></p>');
+          $user.text('@'+tweet.user+ ': ');
+          $message.text(tweet.message);
+          $timestamp.text(tweet.created_at);
+          $user.appendTo($tweet);
+          $message.appendTo($tweet);
+          $timestamp.appendTo($tweet);
+          $tweet.appendTo($('.timeline'));
+          index -= 1;
+        } */
+
+        var getNewTweets = function() {
+          var index = streams.home.length - 1;
+        while(index >= 0){
+          var tweet = streams.home[index];
+          var $tweet =  $('<div class="new-tweet"></div>');//$('.new-tweet');
+          //var $time = $.now();
+          var $user = $('<a href="#"></a>'); //<p class="username"></p>
+          var $message = $('<p class="tweet-text"></p>');
+          var $timestamp = $('<p class="timestamp"></p>');
+          $timestamp.text(tweet.created_at);
           $user.text("@"+tweet.user+ ': ');
+          $user.addClass(tweet.user);
           $message.text(tweet.message);
           $user.appendTo($tweet);
           $message.appendTo($tweet);
+          $timestamp.appendTo($tweet);
           $tweet.appendTo($('.timeline'));
           index -= 1;
         }
-
+      }
+      $('.refresh').on('click', function() {
+        getNewTweets();
+        });
       });
+
+      $('a').on('click', function() {
+        $(this).doSomething; //event handler to get access to the timeline of a specific user
+      })
 
     </script>
   </body>

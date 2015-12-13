@@ -45,3 +45,33 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/*STYLING*/
+.nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+.nav-bar li {
+  float: right;
+  background-color: #00E8E0;
+}
+
+.nav-bar li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.new-tweet {
+  background-color: #a6bbff;
+  display: block;
+  padding: 15px;
+  border: 2px dotted black;
+  margin: 5px;
+}
