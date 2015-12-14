@@ -47,17 +47,30 @@ table {
 }
 
 /*STYLING*/
+.title, .subtitle {
+  font-family: 'Lato', sans-serif;
+}
+
+.title {
+  font-size: 30px;
+  color: #FF3300;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #C100E8;
+}
+
 .nav-bar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-
 }
 
 .nav-bar li {
   float: right;
-  background-color: #00E8E0;
+  background-color: #00E8A0;
 }
 
 .nav-bar li a {
@@ -68,10 +81,31 @@ table {
   text-decoration: none;
 }
 
+.container {
+  background-color: 
+}
 .new-tweet {
-  background-color: #a6bbff;
+  background-color: #F1FFE1;
   display: block;
   padding: 15px;
   border: 2px dotted black;
   margin: 5px;
+  width: 75%;
+}
+
+.username {
+  font-size: 20px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #FF3300;
+}
+
+.tweet-text, .timestamp {
+  font-family: 'Poiret One', cursive;
+}
+.tweet-text {
+  font-size: 18px;
+}
+.timestamp {
+  font-size: 14px;
 }
