@@ -19,13 +19,14 @@
       <button class='refresh'>Refresh the Timeline</button>
     </header>
     <section class='timeline'>
-      <p>Here's what you've missed!</p> 
+      <p>Here's what you've missed!</p>
+      <div class="container"></div> 
     </section>
     
     
     <script>
 
-      $(document).ready(function(){
+      $(document).ready(function() {
         var $body = $('body');
         //$body.html('');
 
@@ -51,30 +52,56 @@
           var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet =  $('<div class="new-tweet"></div>');//$('.new-tweet');
-          //var $time = $.now();
-          var $user = $('<a href="#"></a>'); //<p class="username"></p>
+          var $tweet =  $('<div class="new-tweet"></div>');
+          var $user = $('<button class="username"></button>');
           var $message = $('<p class="tweet-text"></p>');
           var $timestamp = $('<p class="timestamp"></p>');
-          $timestamp.text(tweet.created_at);
+          $timestamp.text(tweet.created_at.getDate() + '/' + tweet.created_at.getMonth() + '/' + tweet.created_at.getFullYear() + ' ' + tweet.created_at.getHours() + ':' + tweet.created_at.getMinutes()+':'+tweet.created_at.getSeconds());
           $user.text("@"+tweet.user+ ': ');
-          $user.addClass(tweet.user);
+          $user.data({'name': tweet.user});
           $message.text(tweet.message);
           $user.appendTo($tweet);
           $message.appendTo($tweet);
           $timestamp.appendTo($tweet);
-          $tweet.appendTo($('.timeline'));
+          $tweet.appendTo($('.container'));
           index -= 1;
         }
-      }
+      };
+
+
+
       $('.refresh').on('click', function() {
+        $('.container').html('');
         getNewTweets();
         });
+      
+      $('.container').on('click', '.username', function() {
+        event.preventDefault();
+        var clickedName = $(this).data('name');
+        console.log(clickedName);
+        $('.container').html('');
+        var index = streams.users[clickedName].length - 1;
+        while(index >= 0){
+          var tweet = streams.users[clickedName][index];
+          var $tweet =  $('<div class="new-tweet"></div>');
+          var $user = $('<button class="username"></button>');
+          var $message = $('<p class="tweet-text"></p>');
+          var $timestamp = $('<p class="timestamp"></p>');
+          $timestamp.text(tweet.created_at.getDate() + '/' + tweet.created_at.getMonth() + '/' + tweet.created_at.getFullYear() + ' ' + tweet.created_at.getHours() + ':' + tweet.created_at.getMinutes()+':'+tweet.created_at.getSeconds());
+          $user.text("@"+tweet.user+ ': ');
+          $user.data({'name': tweet.user});
+          $message.text(tweet.message);
+          $user.appendTo($tweet);
+          $message.appendTo($tweet);
+          $timestamp.appendTo($tweet);
+          $tweet.appendTo($('.container'));
+          index -= 1;
+        }
       });
 
-      $('a').on('click', function() {
-        $(this).doSomething; //event handler to get access to the timeline of a specific user
-      })
+
+      //setTimeout(getNewTweets, 10000);
+      });
 
     </script>
   </body>
