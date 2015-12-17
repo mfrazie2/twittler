@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:700italic' rel='stylesheet' type='text/css'>
+  <head lang="en">
+    <meta charset="utf-8"> 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <!-- BOOTSTRAP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <title>Twittler</title>
   </head>
   <body>
     <header>
-      <h1 class="title">Twittler</h1>
-      <p class="subtitle">String of conciousness caught in a timeline.</p>
-      <ul class='nav-bar'>
-        <li><a href='#' class="find_new">Find something new</a></li>
-        <li><a href='#' class="followers">Followers</a></li>
-        <li><a href='#' class="following">Following</a></li>
-        <li><a href='#' class="home">Home</a></li>
-      </ul>
-      <button class='refresh'>Refresh the Timeline</button>
+      <div class="main-head">
+        <h1 class="title">Twittler</h1>
+        <p class="subtitle">String of conciousness caught in a timeline.</p>
+        <a href='#' class="following">Following (4)</a>
+        <a href='#' class="followers">Followers (140)</a>
+        <a href='#' class="find_new">Find Something New</a>
+      </div>
+      <div class="sub-head">
+        <p>Here's what you've missed!</p>
+        <a href="#" class='refresh'>Refresh the Timeline</a>
+      </div>
     </header>
     <section class='timeline'>
-      <p>Here's what you've missed!</p>
-      <div class="container"></div> 
+      <div class="container">
+        <div class="row">
+        </div>
+      </div> 
     </section>
     
-    <footer></footer>
+    <footer>
+      <p>&copy; 2015 Mike Frazier</p>
+    </footer>
     
     <script>
 
@@ -55,7 +66,7 @@
           var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet =  $('<div class="new-tweet"></div>');
+          var $tweet =  $('<div class="col-sm-4 new-tweet"></div>');
           var $user = $('<a href="#" class="username"></a>');
           var $message = $('<p class="tweet-text"></p>');
           var $timestamp = $('<p class="timestamp"></p>');
