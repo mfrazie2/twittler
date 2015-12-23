@@ -16,8 +16,9 @@
   <body>
     <header>
       <div class="main-head">
-        <h1 class="title">Twittler</h1>
+        <h1 class="title home">Twittler</h1>
         <p class="subtitle">String of conciousness caught in a timeline.</p>
+      
         <a href='#' class="following">Following (4)</a>
         <a href='#' class="followers">Followers (140)</a>
         <a href='#' class="find_new">Find Something New</a>
@@ -27,12 +28,14 @@
         <a href="#" class='refresh'>Refresh the Timeline</a>
       </div>
     </header>
-    <section class='timeline'>
+    <section>
       <div class="container">
-        <div class="row">
+         <div class="row">
         </div>
       </div> 
     </section>
+      
+    
     
     <footer>
       <p>&copy; 2015 Mike Frazier</p>
@@ -44,52 +47,33 @@
         var $body = $('body');
         //$body.html('');
 
-        /*var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet =  $('<div class="new-tweet"></div>');//$('.new-tweet');
-          //var $time = $.now();
-          var $user = $('<span class="username"></span>');
-          var $message = $('<span class="tweet-text"></span>');
-          var $timestamp = $('<p class="timestamp"></p>');
-          $user.text('@'+tweet.user+ ': ');
-          $message.text(tweet.message);
-          $timestamp.text(tweet.created_at);
-          $user.appendTo($tweet);
-          $message.appendTo($tweet);
-          $timestamp.appendTo($tweet);
-          $tweet.appendTo($('.timeline'));
-          index -= 1;
-        } */
-
         var getNewTweets = function() {
           var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet =  $('<div class="col-sm-4 new-tweet"></div>');
+          var $tweet =  $('<div class="col-sm-3 new-tweet"></div>');
           var $user = $('<a href="#" class="username"></a>');
           var $message = $('<p class="tweet-text"></p>');
           var $timestamp = $('<p class="timestamp"></p>');
           $timestamp.text(tweet.created_at.getDate() + '/' + tweet.created_at.getMonth() + '/' + tweet.created_at.getFullYear() + ' ' + tweet.created_at.getHours() + ':' + tweet.created_at.getMinutes());
           $user.text("@"+tweet.user+ ': ');
           $user.data({'name': tweet.user});
+          $user.addClass(tweet.user);
           $message.text(tweet.message);
           $user.appendTo($tweet);
           $message.appendTo($tweet);
           $timestamp.appendTo($tweet);
-          $tweet.appendTo($('.container'));
+          $tweet.appendTo($('.row'));
           index -= 1;
         }
       };
 
-
-
       $('.refresh').on('click', function() {
-        $('.container').html('');
+        $('.row').html('');
         getNewTweets();
         });
       $('.home').on('click', function() {
-        $('.container').html('');
+        $('.row').html('');
         getNewTweets();
         });
       
@@ -97,28 +81,29 @@
         event.preventDefault();
         var clickedName = $(this).data('name');
         //console.log(clickedName);
-        $('.container').html('');
+        $('.row').html('');
         var index = streams.users[clickedName].length - 1;
         while(index >= 0){
           var tweet = streams.users[clickedName][index];
-          var $tweet =  $('<div class="new-tweet"></div>');
+          var $tweet =  $('<div class="col-sm-3 new-tweet"></div>');
           var $user = $('<a href="#" class="username"></a>');
           var $message = $('<p class="tweet-text"></p>');
           var $timestamp = $('<p class="timestamp"></p>');
           $timestamp.text(tweet.created_at.getDate() + '/' + tweet.created_at.getMonth() + '/' + tweet.created_at.getFullYear() + ' ' + tweet.created_at.getHours() + ':' + tweet.created_at.getMinutes());
           $user.text("@"+tweet.user+ ': ');
           $user.data({'name': tweet.user});
+          $user.addClass(tweet.user);
           $message.text(tweet.message);
           $user.appendTo($tweet);
           $message.appendTo($tweet);
           $timestamp.appendTo($tweet);
-          $tweet.appendTo($('.container'));
+          $tweet.appendTo($('.row'));
           index -= 1;
         }
       });
 
 
-      //setTimeout(getNewTweets, 10000);
+      getNewTweets();
       });
 
     </script>
