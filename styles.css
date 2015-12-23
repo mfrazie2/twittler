@@ -62,10 +62,14 @@ header {
 
 .title {
   font-size: 60px;
+  cursor: pointer;
 }
 
 .subtitle {
   font-size: 24px;
+}
+.followers, .following, .find_new {
+  color: #FFFFFF;
 }
 
 .sub-head, footer {
@@ -85,31 +89,56 @@ a {
   color: #FFFFFF;
 }
 
-.timeline {
+section {
+  width: 100%;
   background-color: #F7F7F7;
+}
+
+.container {
+  background-color: #F7F7F7;
+  margin: 0px;
 }
 .new-tweet {
   font-size: 30px;
-  height: 140px;
+  height: 145px;
+  width: 300px;
   background-color: #FFFFFF;
   border-top: 1px solid black;
   border-left: 1px solid black;
-  margin: 25px;
+  margin: 15px;
 }
 
 .username {
   font-size: 20px;
-  font-family: sans-serif;
   text-decoration: none;
   color: #FF3300;
+}
+
+/*Colors for the different usernames */
+.douglascalhoun {
+  color: #0054A2;
+}
+
+.sharksforcheap {
+  color: #FF9179;
+}
+
+.mracus {
+  color: #EFCD43;
+}
+
+.shawndrost {
+  color: #5CE6CD;
 }
 
 .tweet-text {
   font-size: 18px;
 }
+
 .timestamp {
   font-size: 14px;
 }
+
 footer {
   color: #FFFFFF;
   text-align: center;
