@@ -55,7 +55,7 @@
           var $user = $('<a href="#" class="username"></a>');
           var $message = $('<p class="tweet-text"></p>');
           var $timestamp = $('<p class="timestamp"></p>');
-          $timestamp.text(tweet.created_at.getDate() + '/' + tweet.created_at.getMonth() + '/' + tweet.created_at.getFullYear() + ' ' + tweet.created_at.getHours() + ':' + tweet.created_at.getMinutes());
+          $timestamp.text(tweet.created_at.getDate() + '/' + (tweet.created_at.getMonth() + 1) + '/' + tweet.created_at.getFullYear() + ' ' + tweet.created_at.getHours() + ':' + tweet.created_at.getMinutes());
           $user.text("@"+tweet.user+ ': ');
           $user.data({'name': tweet.user});
           $user.addClass(tweet.user);
